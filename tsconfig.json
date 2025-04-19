@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/node",
+		"target": "ES2022",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"baseUrl": ".",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"declarationDir": "./types",
+        "jsx": "react-jsx",
+		"types": ["node"],
+		"lib": ["es2022", "dom"],
+		"declarationMap": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"inlineSources": true,
+		"sourceRoot": "/",
+		"noErrorTruncation": true
+	},
+    "exclude": [
+        "./types",
+        "./example/js"
+    ],
+    "include": [
+        "./src/**/*.ts"
+    ]
+}

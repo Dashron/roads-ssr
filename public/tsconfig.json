@@ -1,0 +1,15 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"target": "es2022",
+		"noEmitOnError": true,
+		"lib": ["es2020", "dom"],
+		"strictNullChecks": true,
+		"allowSyntheticDefaultImports": true,
+		"types": ["react", "react-dom"],
+		"esModuleInterop": false,
+		"jsx": "react-jsx",
+		"resolveJsonModule": true,
+	}
+}
