@@ -11,7 +11,7 @@ import { ModifiedSinceContext } from 'roads/types/middleware/modifiedSince.js';
 export const dirname = url.fileURLToPath(new URL('.', import.meta.url));
 export const staticUrlRoot = '/static/';
 export const staticPathRoot = `${pathModule.resolve(`${dirname}../../../../public`)}/`;
-export const projectRoute = `${pathModule.resolve(`${dirname}../`)}/`;
+export const projectRoute = `${pathModule.resolve(`${dirname}../../../../src/projects`)}/`;
 
 export function returnFile(context: StoreValsContext & ModifiedSinceContext, filePath: string, contentType: string) {
 	context.storeVal('ignoreLayout', true);
@@ -43,6 +43,7 @@ export function getReactUrl(path: string, sourcemap: boolean, includeLastModifie
 }
 
 export function getReactSrcPath(path: string) {
+	console.log('getReactSrcPath', `${projectRoute}${path}.tsx`);
 	return `${projectRoute}${path}.tsx`;
 }
 

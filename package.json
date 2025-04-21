@@ -30,6 +30,7 @@
   "scripts": {
     "start": "tsc && node dist/node/server.js ./tsconfig.json",
     "build": "tsc && node dist/node/buildClient.js",
+    "watch-js": "npm run build -- watch",
     "build-css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./public/css/main.css -c ./tailwind.config.js",
     "watch-css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./public/css/main.css  -c ./tailwind.config.js --watch"
   },

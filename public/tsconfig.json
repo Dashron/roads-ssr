@@ -1,8 +1,6 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
-		"moduleResolution": "node",
-		"target": "es2022",
 		"noEmitOnError": true,
 		"lib": ["es2020", "dom"],
 		"strictNullChecks": true,

@@ -36,7 +36,7 @@ road.use(addLayout(function layout(body: ReactResponse, data, context: CSRFConte
 			LayoutComponent({
 				...data,
 				host: data.host,
-				response: body.jsxBody,
+				content: body.jsxBody,
 				csrfElement: context.getCSRFFormElement()
 			})
 		)}`;
@@ -49,7 +49,7 @@ road.use(addLayout(function layout(body: ReactResponse, data, context: CSRFConte
 				LayoutComponent({
 					...data,
 					host: data.host,
-					response: UnexpectedError({ message: 'Sorry, something is broken. The issue has been logged and will be investigated soon!' }),
+					content: UnexpectedError({ message: 'Sorry, something is broken. The issue has been logged and will be investigated soon!' }),
 					csrfElement: context.getCSRFFormElement()
 				})
 			)}`;
@@ -67,7 +67,6 @@ addRoutes(router);
 road.use(emptyTo404);
 
 app.set('etag', false);
-// this.app.set('cacheControl', false);
 app.use(express.raw({ type: '*/*' }));
 app.use(roadsExpressMiddleware(road));
 
