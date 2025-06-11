@@ -5,8 +5,12 @@ import { hydrate } from '../../core/components/hydrate.js';
 export function ExampleInteraction({  }: {}) {
 	const [count, setCount] = React.useState(0);
 	return (
-		<div className="flex flex-col items-center justify-center h-screen">
-			<div>Count: {count}</div>
+		<div className="flex flex-col items-center justify-center border-2 border-gray-300 rounded-lg p-4">
+			<span>
+				Everything in this box was initially rendered on the server,<br /> 
+				and then turned into an interactive component in the browser.
+			</span>
+			<div>{`Count: ${count}`}</div>
 			<button
 				onClick={() => {
 					setCount(count + 1);

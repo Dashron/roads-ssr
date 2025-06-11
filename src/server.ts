@@ -30,35 +30,39 @@ road.use(function (method, url, body, headers, next) {
 
 attachCommonMiddleware(road);
 road.use(CookieMiddleware.serverMiddleware);
-road.use(addLayout(function layout(body: ReactResponse, data, context: CSRFContext) {
-	try {
-		return `<!DOCTYPE html>\n${ReactDOMServer.renderToStaticMarkup(
-			LayoutComponent({
-				...data,
-				host: data.host,
-				content: body.jsxBody,
-				csrfElement: context.getCSRFFormElement()
-			})
-		)}`;
-	} catch (e) {
-		console.error(e, { path: 'TODO', method: 'TODO' });
-
+road.use(
+	addLayout(function layout(body: ReactResponse, data, context: CSRFContext) {
 		try {
-			// If rendering the real page fails, try rendering an unexpected error
 			return `<!DOCTYPE html>\n${ReactDOMServer.renderToStaticMarkup(
 				LayoutComponent({
 					...data,
 					host: data.host,
-					content: UnexpectedError({ message: 'Sorry, something is broken. The issue has been logged and will be investigated soon!' }),
+					content: body.jsxBody,
 					csrfElement: context.getCSRFFormElement()
 				})
 			)}`;
-		} catch (e2) {
-			console.error(e2, { path: 'TODO', method: 'TODO' });
-			return 'Sorry, something is broken. The issue has been logged and will be investigated soon!';
+		} catch (e) {
+			console.error(e, { path: 'TODO', method: 'TODO' });
+
+			try {
+				// If rendering the real page fails, try rendering an unexpected error
+				return `<!DOCTYPE html>\n${ReactDOMServer.renderToStaticMarkup(
+					LayoutComponent({
+						...data,
+						host: data.host,
+						content: UnexpectedError({
+							message: 'Sorry, something is broken. The issue has been logged and will be investigated soon!'
+						}),
+						csrfElement: context.getCSRFFormElement()
+					})
+				)}`;
+			} catch (e2) {
+				console.error(e2, { path: 'TODO', method: 'TODO' });
+				return 'Sorry, something is broken. The issue has been logged and will be investigated soon!';
+			}
 		}
-	}
-}));
+	})
+);
 
 road.use(buildCSRFMiddleware('SecreTConfigMeTODO', 'csrf_token'));
 

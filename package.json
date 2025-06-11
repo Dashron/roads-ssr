@@ -8,14 +8,17 @@
   },
   "description": "Example for roads.js",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.8",
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/node": "^22.13.10",
     "@types/react-dom": "^19.0.4",
     "esbuild": "0.25.0",
     "glob": "^11.0.1",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "tailwindcss": "^4.1.8",
+    "tsc-watch": "^7.1.1"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.0.16",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "brfs": "2.0.2",
@@ -29,8 +32,8 @@
   "private": true,
   "scripts": {
     "start": "tsc && node dist/node/server.js ./tsconfig.json",
-    "build": "tsc && node dist/node/buildClient.js",
-    "watch-js": "npm run build -- watch",
+    "watch-all": "npm run build-js && node dist/node/watchAll.js --watch",
+    "build-js": "tsc",
     "build-css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./public/css/main.css -c ./tailwind.config.js",
     "watch-css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./public/css/main.css  -c ./tailwind.config.js --watch"
   },
